@@ -3,3 +3,4 @@
 /public/*
 /src/Template/packages/*
 composer.lock
+*.map

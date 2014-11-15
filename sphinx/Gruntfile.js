@@ -38,7 +38,8 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'sass',
           src: ['*.sass'],
-          dest: 'sphinx_rtd_theme/static/css',
+          // dest: 'sphinx_rtd_theme/static/css',
+          dest: '../src/Template/css',
           ext: '.css'
         }]
       },
@@ -51,7 +52,8 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'sass',
           src: ['*.sass'],
-          dest: 'sphinx_rtd_theme/static/css',
+          // dest: 'sphinx_rtd_theme/static/css',
+          dest: '../src/Template/css',
           ext: '.css'
         }]
       }
