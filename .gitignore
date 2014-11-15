@@ -1,3 +1,5 @@
 /vendor/
 /docs/*
+/public/*
+/src/Template/packages/*
 composer.lock
