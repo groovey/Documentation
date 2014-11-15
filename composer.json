@@ -1,0 +1,31 @@
+{
+    "name": "groovey/documentation",
+    "description": "A scaffolding tool to generate markdown documentation websit",
+    "license": "MIT",
+    "keywords": ["markdown", "markdown to html", "clean website" , "phpdoc"],
+    "authors": [
+        {
+            "name": "Harold Kim Cantil",
+            "email": "pokoot@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "*",
+        "symfony/yaml" : "*",
+        "symfony/finder" : "*",
+        "pimple/pimple" : "~3.0",
+        "illuminate/support": "*",
+        "erusev/parsedown" : "*",
+        "groovey/migration": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "mockery/mockery" : "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Groovey\\Documentation\\": "src"
+        }
+    }
+
+}

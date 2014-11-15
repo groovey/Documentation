@@ -1,0 +1,35 @@
+{
+  "name": "Groovey",
+  "version": "1.0.0",
+  "authors": [
+    "pokoot <pokoot@gmail.com>"
+  ],
+  "description": "The Groovey framework",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "php",
+    "framework",
+    "yml",
+    "easy",
+    "simple",
+    "groovey",
+    "configurable"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery" : "*",
+    "animate.css": "*",
+    "bootstrap": "*",
+    "fontawesome": "*",
+    "bootstrap-sass-official": "*"
+  }
+}
