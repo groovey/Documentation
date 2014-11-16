@@ -3,7 +3,6 @@
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Groovey\Documentation\Manager;
 
 class Build extends Command
@@ -30,7 +29,7 @@ class Build extends Command
         $twig   = new \Twig_Environment($loader);
 
         $x = 1;
-        foreach (Manager::getAllFiles() AS $file) {
+        foreach (Manager::getAllFiles() as $file) {
 
             $saveFilename = ($x == 1) ? 'index.html' : $file['html_file'];
 

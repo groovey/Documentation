@@ -36,7 +36,7 @@ class Manager
 
             $filename = $file->getRelativePathname();
 
-            if (strpos($filename, '-')){
+            if (strpos($filename, '-')) {
                 list($prefix, $temp)     = explode('-', $filename);
                 list($title, $extension) = explode('.', $temp);
                 $prefix                  = trim($prefix);
@@ -68,7 +68,7 @@ class Manager
         $html  = '';
         $x     = 1;
 
-        foreach ($files AS $file) {
+        foreach ($files as $file) {
 
             $current = ($selected == $file['html_file']) ? 'current' : '';
             $link    = ($x == 1) ? 'index.html' : $file['html_file'];
@@ -77,22 +77,20 @@ class Manager
                             <a class="reference internal" href="' . $link .'">' .$file['title']. '</a>
                         </li>';
 
-
             $x++;
         }
 
         return '<ul>' . $html . '</ul>';
     }
 
-
-    public static function generateNavigation($current){
-
+    public static function generateNavigation($current)
+    {
         $files = self::getAllFiles();
         $html  = '';
         $x     = 1;
         $nav   = [];
 
-        foreach ($files AS $file) {
+        foreach ($files as $file) {
             $nav[] = ($x == 1) ? 'index.html' : $file['html_file'];
             $x++;
         }
@@ -100,7 +98,6 @@ class Manager
         $key      = array_search($current, $nav);
         $previous = ($key == 0) ? null : $key - 1;
         $next     = ($key == count($nav) - 1 ) ? null :  $key + 1;
-
 
         if (isset($next)) {
             $html .= '<a href="' . $nav[$next] . '" class="btn btn-neutral float-right">Next &nbsp;

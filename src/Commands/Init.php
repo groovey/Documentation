@@ -3,7 +3,6 @@
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Groovey\Documentation\Manager;
 
 class Init extends Command
 {
@@ -35,6 +34,7 @@ class Init extends Command
 
         if (false === @mkdir($folderDocs, 0755, true) && !file_exists($folderDocs)) {
             $output->writeln($error);
+
             return;
         }
 
@@ -42,13 +42,13 @@ class Init extends Command
 
         if (false === @mkdir($folderMarkdown, 0755, true) && !file_exists($folderMarkdown)) {
             $output->writeln($error);
+
             return;
         }
 
         if (file_exists($folderMarkdown) && is_dir($folderMarkdown)) {
             $output->writeln("<error>Place all your markdown files in ({$folderMarkdown})</error>");
         }
-
 
         /*
         | -------------------------------------------------------------------
