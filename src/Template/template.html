@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Groovey</title>
+    <title>{{project_name}} | {{title}}</title>
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
@@ -27,47 +27,32 @@
 
         <nav data-toggle="wy-nav-shift" class="wy-nav-side">
             <div class="wy-side-nav-search">
-                <a href="index.html" class="fa fa-home"> Mocha</a>
+                <a href="index.html" class="fa fa-home"> {{project_name}}</a>
             </div>
-
             <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-
-
-                    {{MENU|raw}}
-
-                  <!--
-                   <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="network.html">Networks</a></li>
-                    <li class="toctree-l1"><a class="reference internal" href="blob.html">Blob</a></li>
-                    <li class="toctree-l1"><a class="reference internal" href="layers/index.html">Layers</a></li>
-                    <li class="toctree-l1 current"><a class="current reference internal" href="">Mocha Backends</a></li>
-                    </ul>
-                 -->
-
-
+                {{menu|raw}}
             </div>
-
         </nav>
 
 
 
         <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
-            <!-- Top header   -->
+            <!-- Mobile Header   -->
 
             <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
                 <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-                <a href="index.html">Mocha</a>
+                <a href="index.html">{{project_name}}</a>
             </nav>
 
-
+            <!-- Content -->
 
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="navigation" aria-label="breadcrumbs navigation">
                         <ul class="wy-breadcrumbs">
                             <li><a href="index.html">Docs</a> &raquo;</li>
-                            <li>Mocha Backends</li>
+                            <li>{{title}}</li>
                         </ul>
                         <hr/>
                     </div>
@@ -79,15 +64,27 @@
                     </div>
 
                     <footer>
+
+
+
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                            <a href="layers/overview.html" class="btn btn-neutral" title="Overview">
-                                <span class="fa fa-arrow-circle-left">&nbsp;</span>Previous
-                            </a>
+
+                            {{navigation|raw}}
+
+                            <!-- <a href="require.html" class="btn btn-neutral float-right" title="Requirements">Next
+                            <span class="fa fa-arrow-circle-right"></span></a>
+
+
+                            <a href="index.html" class="btn btn-neutral" title="Welcome to phpMyAdmin’s documentation!">
+                            <span class="fa fa-arrow-circle-left"></span>Previous</a> -->
+
                         </div>
+
                         <hr/>
                         <div role="contentinfo">
                             <p>
-                                &copy; Copyright Groovey.
+                                &copy; Copyright
+                                <a href="https://github.com/groovey" target="_blank">Groovey.</a>
                             </p>
                         </div>
                     </footer>

@@ -1,18 +1,21 @@
 <?php namespace Groovey\Documentation;
 
 use Symfony\Component\Finder\Finder;
-
-
-
-use Symfony\Component\Templating\PhpEngine;
-use Symfony\Component\Templating\TemplateNameParser;
-use Symfony\Component\Templating\Loader\FilesystemLoader;
+use Symfony\Component\Yaml\Parser;
 
 class Manager
 {
 
     public function __construct()
     {
+    }
+
+    public static function getConfig()
+    {
+        $yaml = new Parser();
+        $config = $yaml->parse(file_get_contents(self::getDirectory() . '/config.yml'));
+
+        return $config;
     }
 
     public static function getDirectory($folder = '')
@@ -47,7 +50,7 @@ class Manager
             $data[] = [
                 'filename'          => $filename,
                 'prefix'            => $prefix,
-                'title'              => $title,
+                'title'             => $title,
                 'extension'         => $extension,
                 'html_file'         => strtolower(str_replace(' ', '-', $title) . '.html' ),
                 'real_path'         => $file->getRealpath(),
@@ -81,30 +84,36 @@ class Manager
         return '<ul>' . $html . '</ul>';
     }
 
-    public static function build()
-    {
 
-        $loader = new \Twig_Loader_Filesystem(__DIR__. '/Template/');
-        $twig   = new \Twig_Environment($loader);
+    public static function generateNavigation($current){
 
         $files = self::getAllFiles();
+        $html  = '';
+        $x     = 1;
+        $nav   = [];
 
-        $x = 1;
         foreach ($files AS $file) {
-
-            $MENU = self::generateMenu($file['html_file']);
-
-            $saveFilename = ($x == 1) ? 'index.html' : $file['html_file'];
-
-            $contents = $twig->render('template.html', [
-                'MENU' => $MENU
-            ]);
-
-            file_put_contents(getcwd() . '/public/' . $saveFilename, $contents);
-
+            $nav[] = ($x == 1) ? 'index.html' : $file['html_file'];
             $x++;
         }
 
+        $key      = array_search($current, $nav);
+        $previous = ($key == 0) ? null : $key - 1;
+        $next     = ($key == count($nav) - 1 ) ? null :  $key + 1;
+
+
+        if (isset($next)) {
+            $html .= '<a href="' . $nav[$next] . '" class="btn btn-neutral float-right">Next &nbsp;
+                      <span class="fa fa-arrow-circle-right"></span></a>';
+
+        }
+
+        if (isset($previous)) {
+            $html .= '<a href="' . $nav[$previous] .'" class="btn btn-neutral">
+                      <span class="fa fa-arrow-circle-left"></span>&nbsp; Previous</a>';
+        }
+
+        return $html;
     }
 
 }

@@ -52,16 +52,13 @@ class Init extends Command
 
         /*
         | -------------------------------------------------------------------
-        | Create the Template
+        | Create the config template
         | -------------------------------------------------------------------
         */
 
         $template = <<<TEMPLATE
 project_name: Awesome
-path_build: public/doc
-path_css: public/css
-path_js: public/js
-path_bower: public/packages
+path_build: public
 
 TEMPLATE;
 

@@ -9,7 +9,6 @@ class Documentation
     {
         return [
             new Commands\Init,
-            new Commands\Generate,
             new Commands\Build,
         ];
     }
