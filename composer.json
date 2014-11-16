@@ -13,12 +13,11 @@
         "symfony/console": "*",
         "symfony/yaml" : "*",
         "symfony/finder" : "*",
+        "symfony/filesystem": "*",
         "pimple/pimple" : "~3.0",
         "illuminate/support": "*",
         "erusev/parsedown" : "*",
-        "twig/twig" : "~1.0",
-        "symfony/templating": "*",
-        "groovey/migration": "*"
+        "twig/twig" : "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "*",

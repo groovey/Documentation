@@ -3,6 +3,9 @@
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 use Groovey\Documentation\Manager;
 
 class Build extends Command
@@ -23,6 +26,12 @@ class Build extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
+        /*
+        | -------------------------------------------------------------------
+        | Parse to .html
+        | -------------------------------------------------------------------
+        */
+
         $config = Manager::getConfig();
 
         $loader = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
@@ -40,10 +49,33 @@ class Build extends Command
                 'navigation'   => Manager::generateNavigation($file['html_file'])
             ]);
 
-            file_put_contents(getcwd() . '/' . $config['path_build'] .'/' . $saveFilename, $contents);
+            $path = getcwd() . '/' . $config['path_build'] .'/' . $saveFilename;
+
+            file_put_contents($path, $contents);
+
+            $output->writeln("Parsing ($saveFilename)");
 
             $x++;
         }
+
+
+        /*
+        | -------------------------------------------------------------------
+        | Mirror to destination folder
+        | -------------------------------------------------------------------
+        */
+
+        $fs = new Filesystem();
+
+        $fromPath = __DIR__ . '/../Template/';
+        $toPath = getcwd() . '/' . $config['path_build'] .'/';
+
+        $fs->mkdir($toPath . 'css', 0700);
+        $fs->mkdir($toPath . 'fonts', 0700);
+        $fs->mkdir($toPath . 'js', 0700);
+
+        $fs->mirror($fromPath, $toPath);
+        $fs->remove($toPath . 'template.html');
 
         $text = 'Successfully build documention';
         $output->writeln($text);
