@@ -3,17 +3,15 @@ Groovey Documentation
 
 A scaffolding tool to generate markdown documentation website. The generates a very cool looking website for your documentation needs.
 
-
-## Usage
-
-    groovey doc:build
-
 ## How Does It Look?
 
 Well, isn't that cool!
 
 ![alt tag](https://raw.githubusercontent.com/groovey/Documentation/master/groovey.png)
 
+## Usage
+
+    groovey doc:build
 
 ## Installation
 
