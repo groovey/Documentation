@@ -1,7 +1,7 @@
 Groovey Documentation
 =====================
 
-A scaffolding tool to generate markdown documentation website. The generates a very cool looking website for your documentation needs.
+A php scaffolding tool to generate markdown documentation website. The generates a very cool looking website for your documentation needs.
 
 ## How Does It Look?
 
