@@ -34,8 +34,8 @@ class Build extends Command
 
         $config = Manager::getConfig();
 
-        $loader = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
-        $twig   = new \Twig_Environment($loader);
+        $loader    = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
+        $twig      = new \Twig_Environment($loader);
 
         $x = 1;
         foreach (Manager::getAllFiles() as $file) {
@@ -46,7 +46,8 @@ class Build extends Command
                 'project_name' => $config['project_name'],
                 'title'        => $file['title'],
                 'menu'         => Manager::generateMenu($file['html_file']),
-                'navigation'   => Manager::generateNavigation($file['html_file'])
+                'navigation'   => Manager::generateNavigation($file['html_file']),
+                'content'      => Manager::generateContent($file),
             ]);
 
             $path = getcwd() . '/' . $config['path_build'] .'/' . $saveFilename;

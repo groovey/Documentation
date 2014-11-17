@@ -113,4 +113,15 @@ class Manager
         return $html;
     }
 
+    public static function generateContent($file)
+    {
+
+        $parsedown = new \Parsedown();
+
+        $contents = file_get_contents($file['real_path']);
+
+        return $parsedown->text($contents);
+
+    }
+
 }
