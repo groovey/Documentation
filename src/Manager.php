@@ -13,9 +13,7 @@ class Manager
     public static function getConfig()
     {
         $yaml = new Parser();
-        $config = $yaml->parse(file_get_contents(self::getDirectory() . '/config.yml'));
-
-        return $config;
+        return $yaml->parse(file_get_contents(self::getDirectory() . '/config.yml'));
     }
 
     public static function getDirectory($folder = '')
@@ -28,10 +26,9 @@ class Manager
 
         $finder    = new Finder();
         $markdowns = self::getDirectory('/markdown');
+        $files     = $finder->in($markdowns)->sortByName();
+        $data      = [];
 
-        $files = $finder->in($markdowns)->sortByName();
-
-        $data = [];
         foreach ($files as $file) {
 
             $filename = $file->getRelativePathname();
@@ -117,11 +114,8 @@ class Manager
     {
 
         $parsedown = new \Parsedown();
-
-        $contents = file_get_contents($file['real_path']);
-
+        $contents  = file_get_contents($file['real_path']);
         return $parsedown->text($contents);
-
     }
 
 }

@@ -33,8 +33,8 @@ class Build extends Command
 
         $config = Manager::getConfig();
 
-        $loader    = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
-        $twig      = new \Twig_Environment($loader);
+        $loader = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
+        $twig   = new \Twig_Environment($loader);
 
         $x = 1;
         foreach (Manager::getAllFiles() as $file) {
