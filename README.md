@@ -10,6 +10,9 @@ A scaffolding tool to generate markdown documentation website. The generates a v
 
 ## How Does It Look?
 
+Well, isn't that cool!
+
+![alt tag](https://raw.githubusercontent.com/groovey/Documentation/master/groovey.png)
 
 
 ## Installation
