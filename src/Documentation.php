@@ -8,6 +8,7 @@ class Documentation
         return [
             new Commands\Init(),
             new Commands\Build(),
+            new Commands\About(),
         ];
     }
 }

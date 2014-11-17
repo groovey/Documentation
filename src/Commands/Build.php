@@ -4,7 +4,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 use Groovey\Documentation\Manager;
 
@@ -58,7 +57,6 @@ class Build extends Command
 
             $x++;
         }
-
 
         /*
         | -------------------------------------------------------------------
