@@ -3,6 +3,9 @@
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 class Init extends Command
 {
@@ -28,26 +31,31 @@ class Init extends Command
         | -------------------------------------------------------------------
         */
 
-        $folderDocs = getcwd() . '/docs';
+        $fs     = new Filesystem();
+        $folder = getcwd() . '/docs/markdown';
+        $helper = $this->getHelper('question');
 
-        $error = "<info>Unable to create folder. Check file permissions.</info>";
+        if ($fs->exists($folder)) {
 
-        if (false === @mkdir($folderDocs, 0755, true) && !file_exists($folderDocs)) {
-            $output->writeln($error);
+            $question = new ConfirmationQuestion(
+                '<question>The doc folder already exist, are you sure you want to replace it? (Y/N):</question> ',
+                 false);
+
+            if (!$helper->ask($input, $output, $question)) {
+                return;
+            }
+        }
+
+        try {
+            $fs->mkdir($folder, 755);
+        } catch (IOExceptionInterface $e) {
+            $output->writeln("<error>An error occurred while creating your directory at {$e->getPath()}</error>");
 
             return;
         }
 
-        $folderMarkdown = getcwd() . '/docs/markdown';
-
-        if (false === @mkdir($folderMarkdown, 0755, true) && !file_exists($folderMarkdown)) {
-            $output->writeln($error);
-
-            return;
-        }
-
-        if (file_exists($folderMarkdown) && is_dir($folderMarkdown)) {
-            $output->writeln("<error>Place all your markdown files in ({$folderMarkdown})</error>");
+        if (file_exists($folder) && is_dir($folder)) {
+            $output->writeln("<comment>Place all your markdown files in ($folder)</comment>");
         }
 
         /*
@@ -62,7 +70,16 @@ path_build: public
 
 TEMPLATE;
 
-        file_put_contents($folderDocs . '/config.yml', $template);
+        file_put_contents($folder . '/../config.yml', $template);
+
+        /*
+        | -------------------------------------------------------------------
+        | Create a sample readme file
+        | -------------------------------------------------------------------
+        */
+
+        $contents = file_get_contents(__DIR__. '/../../README.md');
+        file_put_contents($folder . '/01 - readme.yml', $contents);
 
         $text = '<info>Sucessfully created docs.</info>';
 

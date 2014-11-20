@@ -13,6 +13,7 @@ class Manager
     public static function getConfig()
     {
         $yaml = new Parser();
+
         return $yaml->parse(file_get_contents(self::getDirectory() . '/config.yml'));
     }
 
@@ -115,6 +116,7 @@ class Manager
 
         $parsedown = new \Parsedown();
         $contents  = file_get_contents($file['real_path']);
+
         return $parsedown->text($contents);
     }
 

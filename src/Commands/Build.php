@@ -31,10 +31,16 @@ class Build extends Command
         | -------------------------------------------------------------------
         */
 
-        $config = Manager::getConfig();
-
         $loader = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
         $twig   = new \Twig_Environment($loader);
+        $config = Manager::getConfig();
+        $fs     = new Filesystem();
+
+        if (!$fs->exists(getcwd() . '/' . $config['path_build'])) {
+            $output->writeln('<error>The destination directory does not exist. Make sure you create the build folder.</error>');
+
+            return;
+        }
 
         $x = 1;
         foreach (Manager::getAllFiles() as $file) {
@@ -53,7 +59,7 @@ class Build extends Command
 
             file_put_contents($path, $contents);
 
-            $output->writeln("Parsing ($saveFilename)");
+            $output->writeln("<comment>Parsing ($saveFilename).</comment>");
 
             $x++;
         }
@@ -63,11 +69,8 @@ class Build extends Command
         | Mirror to destination folder
         | -------------------------------------------------------------------
         */
-
-        $fs = new Filesystem();
-
         $fromPath = __DIR__ . '/../Template/';
-        $toPath = getcwd() . '/' . $config['path_build'] .'/';
+        $toPath   = getcwd() . '/' . $config['path_build'] .'/';
 
         $fs->mkdir($toPath . 'css', 0700);
         $fs->mkdir($toPath . 'fonts', 0700);
@@ -76,7 +79,6 @@ class Build extends Command
         $fs->mirror($fromPath, $toPath);
         $fs->remove($toPath . 'template.html');
 
-        $text = 'Successfully build documention';
-        $output->writeln($text);
+        $output->writeln('<info>Successfully build documention</info>');
     }
 }
