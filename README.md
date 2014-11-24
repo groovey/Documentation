@@ -11,7 +11,7 @@ Well, isn't that cool!
 
 ## Usage
 
-    groovey doc:build
+    $ groovey doc:build
 
 ## Installation
 
