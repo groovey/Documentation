@@ -7,7 +7,7 @@ A php scaffolding tool to generate markdown documentation website. The generates
 
 ![alt tag](https://raw.githubusercontent.com/groovey/Documentation/master/groovey.png)
 
-## Installation
+## Step 1 - Composer Installation
 
 Install using composer. To learn more about composer, visit: https://getcomposer.org
 
@@ -20,7 +20,7 @@ Install using composer. To learn more about composer, visit: https://getcomposer
 ```
 
 
-## The Groovey File
+## Step 2 - The Groovey File
 
 On your project root folder. Create a file called `groovey`. Or this could be any project name like `awesome`. Then paste the code below.
 
@@ -45,42 +45,29 @@ $app->addCommands(
 $app->run();
 ```
 
-Good job! The hard part is done. Lets get started to create the documentation.
+Good job! The hard part is done. Lets get started.
 
 
-## Permission
+## Step 3 - Init
 
-Make the file is `executable`.
-
-    $ chmod +x groovey
-    $ groovey
-
-    or simply call the php interpreter
-
-    $ php groovey
-
-
-## Init
-
-Initialize the documentation folder and your markdown folder. This will create a folder called `markdown` and a `config.yml` file. All these files can be found under your root folder `./docs/*`
+Initialize the `./docs` folder.
 
     $ groovey doc:init
 
-You can now place all your content files under `./docs/markdown`.
+A `config.yml` file is generated automatically.
 
-## Build
+`project_name` refers to your awesome documentation project.
+
+`path_build` is where the destination folder will be.
+
+Place your content files under `./docs/markdown`.
+
+## Step 4 - Build
 
 Compile all your markdown files to .html files.
 
     $ groovey doc:build
 
-## Custom Site Configuration
-
-After you have run `groovey doc:init`. A `config.yml` file is generated automatically.
-
-`project_name` refers to your awesome documentation.
-
-`path_build` is where the destination folder will be.
 
 ## Custom Ordering
 
