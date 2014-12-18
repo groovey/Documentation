@@ -5,11 +5,12 @@ A php scaffolding tool to generate markdown documentation website. The generates
 
 ## How Does It Look?
 
-Well, isn't that cool!
-
 ![alt tag](https://raw.githubusercontent.com/groovey/Documentation/master/groovey.png)
 
 ## Usage
+
+
+    $ chmod +x groovey
 
     $ groovey doc:build
 
