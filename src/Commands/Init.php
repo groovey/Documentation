@@ -38,7 +38,7 @@ class Init extends Command
         if ($fs->exists($folder)) {
 
             $question = new ConfirmationQuestion(
-                '<question>The doc folder already exist, are you sure you want to replace it? (Y/N):</question> ',
+                '<question>The doc folder already exist, are you sure you want to replace it? (y/N):</question> ',
                  false);
 
             if (!$helper->ask($input, $output, $question)) {

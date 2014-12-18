@@ -50,31 +50,33 @@ Good job! The hard part is done. Lets get started to create the documentation.
 
 ## Permission
 
-Make the file is is_executable.
+Make the file is `executable`.
 
     $ chmod +x groovey
     $ groovey
 
-    or simply call php interpreter
+    or simply call the php interpreter
 
     $ php groovey
 
 
 ## Init
 
-Setups the documentation folder and your markdown folder. These will create a folder called `markdown` and a `config.yml` file. All these files can be found under your root folder `./docs/*`
+Initialize the documentation folder and your markdown folder. This will create a folder called `markdown` and a `config.yml` file. All these files can be found under your root folder `./docs/*`
 
     $ groovey doc:init
 
+You can now place all your content files under `./docs/markdown`.
+
 ## Build
 
-Compile all your markdown files to .html files on the destination folder
+Compile all your markdown files to .html files.
 
     $ groovey doc:build
 
 ## Custom Site Configuration
 
-After you have run `groovey doc:init`. `config.yml` file is generated automatically.
+After you have run `groovey doc:init`. A `config.yml` file is generated automatically.
 
 `project_name` refers to your awesome documentation.
 

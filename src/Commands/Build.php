@@ -31,13 +31,14 @@ class Build extends Command
         | -------------------------------------------------------------------
         */
 
-        $loader = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
-        $twig   = new \Twig_Environment($loader);
-        $config = Manager::getConfig();
-        $fs     = new Filesystem();
+        $loader      = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
+        $twig        = new \Twig_Environment($loader);
+        $config      = Manager::getConfig();
+        $fs          = new Filesystem();
+        $destination = getcwd() . '/' . $config['path_build'];
 
-        if (!$fs->exists(getcwd() . '/' . $config['path_build'])) {
-            $output->writeln('<error>The destination directory does not exist. Make sure you create the build folder.</error>');
+        if (!$fs->exists($destination)) {
+            $output->writeln("<error>The destination directory does not exist ($destination).</error>");
 
             return;
         }
