@@ -7,13 +7,6 @@ A php scaffolding tool to generate markdown documentation website. The generates
 
 ![alt tag](https://raw.githubusercontent.com/groovey/Documentation/master/groovey.png)
 
-## Usage
-
-
-    $ chmod +x groovey
-
-    $ groovey doc:build
-
 ## Installation
 
 Install using composer. To learn more about composer, visit: https://getcomposer.org
@@ -53,6 +46,18 @@ $app->run();
 ```
 
 Good job! The hard part is done. Lets get started to create the documentation.
+
+
+## Permission
+
+Make the file is is_executable.
+
+    $ chmod +x groovey
+    $ groovey
+
+    or simply call php interpreter
+
+    $ php groovey
 
 
 ## Init
