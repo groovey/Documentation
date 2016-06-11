@@ -1,8 +1,9 @@
-<?php namespace Groovey\Documentation;
+<?php
+
+namespace Groovey\Documentation;
 
 class Documentation
 {
-
     public function getCommands()
     {
         return [

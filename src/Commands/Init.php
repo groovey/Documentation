@@ -1,4 +1,6 @@
-<?php namespace Groovey\Documentation\Commands;
+<?php
+
+namespace Groovey\Documentation\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,11 +34,10 @@ class Init extends Command
         */
 
         $fs     = new Filesystem();
-        $folder = getcwd() . '/docs/markdown';
+        $folder = getcwd().'/docs/markdown';
         $helper = $this->getHelper('question');
 
         if ($fs->exists($folder)) {
-
             $question = new ConfirmationQuestion(
                 '<question>The doc folder already exist, are you sure you want to replace it? (y/N):</question> ',
                  false);
@@ -70,7 +71,7 @@ path_build: public
 
 TEMPLATE;
 
-        file_put_contents($folder . '/../config.yml', $template);
+        file_put_contents($folder.'/../config.yml', $template);
 
         /*
         | -------------------------------------------------------------------
@@ -78,8 +79,8 @@ TEMPLATE;
         | -------------------------------------------------------------------
         */
 
-        $contents = file_get_contents(__DIR__. '/../../README.md');
-        file_put_contents($folder . '/01 - readme.yml', $contents);
+        $contents = file_get_contents(__DIR__.'/../../README.md');
+        file_put_contents($folder.'/01 - readme.yml', $contents);
 
         $text = '<info>Sucessfully created docs.</info>';
 

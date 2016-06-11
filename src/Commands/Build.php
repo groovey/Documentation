@@ -1,10 +1,11 @@
-<?php namespace Groovey\Documentation\Commands;
+<?php
+
+namespace Groovey\Documentation\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
-
 use Groovey\Documentation\Manager;
 
 class Build extends Command
@@ -31,11 +32,11 @@ class Build extends Command
         | -------------------------------------------------------------------
         */
 
-        $loader      = new \Twig_Loader_Filesystem(__DIR__. '/../Template/');
+        $loader      = new \Twig_Loader_Filesystem(__DIR__.'/../Template/');
         $twig        = new \Twig_Environment($loader);
         $config      = Manager::getConfig();
         $fs          = new Filesystem();
-        $destination = getcwd() . '/' . $config['path_build'];
+        $destination = getcwd().'/'.$config['path_build'];
 
         if (!$fs->exists($destination)) {
             $output->writeln("<error>The destination directory does not exist ($destination).</error>");
@@ -45,7 +46,6 @@ class Build extends Command
 
         $x = 1;
         foreach (Manager::getAllFiles() as $file) {
-
             $saveFilename = ($x == 1) ? 'index.html' : $file['html_file'];
 
             $contents = $twig->render('template.html', [
@@ -56,13 +56,13 @@ class Build extends Command
                 'content'      => Manager::generateContent($file),
             ]);
 
-            $path = getcwd() . '/' . $config['path_build'] .'/' . $saveFilename;
+            $path = getcwd().'/'.$config['path_build'].'/'.$saveFilename;
 
             file_put_contents($path, $contents);
 
             $output->writeln("<comment>Parsing ($saveFilename).</comment>");
 
-            $x++;
+            ++$x;
         }
 
         /*
@@ -70,15 +70,15 @@ class Build extends Command
         | Mirror to destination folder
         | -------------------------------------------------------------------
         */
-        $fromPath = __DIR__ . '/../Template/';
-        $toPath   = getcwd() . '/' . $config['path_build'] .'/';
+        $fromPath = __DIR__.'/../Template/';
+        $toPath   = getcwd().'/'.$config['path_build'].'/';
 
-        $fs->mkdir($toPath . 'css', 0700);
-        $fs->mkdir($toPath . 'fonts', 0700);
-        $fs->mkdir($toPath . 'js', 0700);
+        $fs->mkdir($toPath.'css', 0700);
+        $fs->mkdir($toPath.'fonts', 0700);
+        $fs->mkdir($toPath.'js', 0700);
 
         $fs->mirror($fromPath, $toPath);
-        $fs->remove($toPath . 'template.html');
+        $fs->remove($toPath.'template.html');
 
         $output->writeln('<info>Successfully build documention</info>');
     }

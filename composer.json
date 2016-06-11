@@ -1,6 +1,6 @@
 {
     "name": "groovey/documentation",
-    "description": "A scaffolding tool to generate markdown documentation websit",
+    "description": "A scaffolding tool to generate markdown documentation website",
     "license": "MIT",
     "keywords": ["markdown", "markdown to html", "clean website" , "phpdoc"],
     "authors": [
