@@ -30,7 +30,7 @@ On your project root folder. Create a file called `groovey`. Or this could be an
 
 set_time_limit(0);
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 use Groovey\Documentation\Documentation;
